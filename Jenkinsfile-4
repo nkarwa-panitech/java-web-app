@@ -18,7 +18,7 @@ pipeline {
         docker { image 'maven:3.8.1-adoptopenjdk-11' }
         }
         steps{
-            sh "mvn test"
+            sh "mvn install"
         }
        }
        stage('Quality Gate Statuc Check'){
@@ -40,7 +40,6 @@ pipeline {
                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
                       }
                     }
-		        sh "mvn clean install"
                   }
                 }  
               }
